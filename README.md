@@ -1,112 +1,34 @@
-* [angular 11.2.14](https://v11.angular.io/docs)
-* [angular workspace](https://angular.io/guide/file-structure)
-* [bootstab 4.6.1](https://getbootstrap.com/docs/4.6/getting-started/introduction/)
-* [ngx-bootstrap](https://valor-software.com/ngx-bootstrap/old/7.1.2/#/)
-* [front-end-theme](https://vsdataentry.pccth.com/front-end-theme/)
-* [login page](https://vsdataentry.pccth.com/rd-sso-login-web/)
+## เครื่องมือที่ใช้
 
-## setup project
-1. git repository
+ - angular 11
+ - node 12
+ - bootstrap 4
+ - ngx-bootstrap
 
-2. install dependency
-```
-npm install  
-```
+## setup project ##
 
-3. build lib ต้อง build ใหม่ทุกครั้ง ที่มีการแก้ไข lib
-```
-ng build rd-vatsbtintra-lib
-```
+ 1. npm install ก่อนการใช้งานทุกครั้ง
+ 2. ng build ทุกครั้งเมื่อมีการแก้ไข lib
+ ## การใช้งานโปรแกรม
+ เมื่อ run programได้แล้วจะเป็นไปตามภาพนี้
+ ![gdfgug](https://github.com/theeratham/pp013-report/assets/78341944/fec769fd-7e83-46a0-90e2-1a76df786d17)
 
-หรือ เพิ่ม oprion --watch เพื่อ ไม่ต้อง มาบิวใหม่ทุกครั้ง ที่มีการแก้ไข lib
-```
-ng build rd-vatsbtintra-lib --watch
-```
+1. รายงานตัวที่ 1 รายงานทะเบียนรับแบบแจ้งการประกอบค้าทองคำ report_business_gold_receive
+![jsbfuige](https://github.com/theeratham/pp013-report/assets/78341944/1e4154cb-a59e-4f78-8fc2-af606ff79164)
 
-4. run project ng serve ชื่อ project เช่น
-```
-ng serve rd-vatsbtde-dln-web 
-```
+ 
+2. รายงานตัวที่ 2 รายงานทะเบียนผู้ประกอบการค้าทองคำในพื้นที่  report_business_gold_area
+![vugei](https://github.com/theeratham/pp013-report/assets/78341944/e63ddc52-c7bb-4707-a24c-c66aef0a469e)
 
-หรือ 
-```
-ng build rd-vatsbtintra-lib && ng serve rd-vatsbtde-dln-web  
-```
 
-หรือ สร้าง script ที่ rd-vatsbtde-web/package.json แล้ว รัน โปรแกรม ผ่าน script
-```
-npm run start-dln
-```
+3.  รายงานตัวที่ 3 รายงานแจ้งเตือนผู้ประกอบการที่ต้องมาต่อสิทธิในท้องที่ report_business_notification_area
+![bjeef](https://github.com/theeratham/pp013-report/assets/78341944/6ae41684-c330-4eeb-bf7d-d2959013b750)
 
-5. setup config css, asset  แก้ไข ไฟล์  rd-vatsbtde-web/package.json แก้ไข ตรง assets ของแต่ล่ะ โปรเจ็ค ให้เพิ่ม
-```
-
-{
-    "glob": "**/*",
-    "input": "projects/rd-vatsbtintra-lib/src/assets",
-    "output": "lib-assets"
-}
-```
- และ "styles": [
-```
-    "styles": [
-        "projects/rd-vatsbtintra-lib/src/styles/font-awesome.css",
-        "projects/rd-vatsbtintra-lib/src/styles/fontawesome-svg.css",
-        "projects/rd-vatsbtintra-lib/src/styles/material-icons.css",
-        "projects/rd-vatsbtintra-lib/src/styles/overide.css",
-
-        "projects/rd-vatsbtintra-lib/src/styles/buttons.scss",
-        "projects/rd-vatsbtintra-lib/src/styles/colors.scss",
-        "projects/rd-vatsbtintra-lib/src/styles/font.scss",
-        "projects/rd-vatsbtintra-lib/src/styles/form.scss",
-        "projects/rd-vatsbtintra-lib/src/styles/icons.scss",
-        "projects/rd-vatsbtintra-lib/src/styles/line.scss",
-        "projects/rd-vatsbtintra-lib/src/styles/modal.scss",
-        "projects/rd-vatsbtintra-lib/src/styles/overide.scss",
-        "projects/rd-vatsbtintra-lib/src/styles/progress.scss",
-        "projects/rd-vatsbtintra-lib/src/styles/shadow.scss",
-        "projects/rd-vatsbtintra-lib/src/styles/sidemenu.scss",
-        "projects/rd-vatsbtintra-lib/src/styles/table.scss",
-        "projects/rd-vatsbtintra-lib/src/styles/tabs.scss"
-    ],
-    "scripts": [
-        "projects/rd-vatsbtintra-lib/src/js/w3.js",
-        "projects/rd-vatsbtintra-lib/src/js/bootstrap.min.js",
-        "projects/rd-vatsbtintra-lib/src/js/jquery.slim.min.js",
-        "projects/rd-vatsbtintra-lib/src/js/popper.min.js",
-        "projects/rd-vatsbtintra-lib/src/js/fontawesome-all.min.js",
-        "projects/rd-vatsbtintra-lib/src/js/others.js"
-    ]
-```
-ตัวอย่าง วิธีใช้ ให้อ้าง lib-assets/  เป็น path หลัก 
-```
- <img src="lib-assets/images/Logo-2021.svg" width="200"  class="d-inline-block align-top pr-3 line-r" alt="">
-```
-
-6. การสร้าง sub project ตัวอย่าง สร้าง sub project rd-vatsbtintra-dashboard-web
-```
-ng generate application rd-vatsbtintra-dashboard-web --routing
-```
-
-7. การสร้าง module ตัวอย่าง สร้าง ตัวอย่างสร้าง module entry ใน project rd-vatsbtintra-dashboard-web
-```
-ng g module modules/entry --project=rd-vatsbtintra-dashboard-web
-```
-
-8. การสร้าง component ตัวอย่างสร้าง component example อยู่ใน module entry ใน project rd-vatsbtintra-dashboard-web
-```
-ng g component modules/entry/example --module modules/entry --project=rd-vatsbtintra-dashboard-web
-```
-
-9. การสร้าง service ตัวอย่างสร้าง service example อยู่ใน path /shared/services/example ใน project rd-vatsbtintra-dashboard-web
-```
-ng g service /shared/services/example --project=rd-vatsbtintra-dashboard-web
-```
-
-## bulid Deploy
-
-```
-ng build rd-vatsbtintra-lib
-ng build rd-vatsbtintra-dashboard-web --base-href=/rd-vatsbtintra-dashboard-web/
-
-```
+4.รายงานตัวที่ 4 รายงานผู้ประกอบการที่ถูกลบออกจากระบบ  report_business_user_remove
+![efbufie](https://github.com/theeratham/pp013-report/assets/78341944/0bfbcbe0-9900-4d0c-8cd7-764f18587328)
+5. รายงานตัวที่ 5 รายงานสถานประกอบการที่ยังไม่ถูกรับโอน report_business_not_transfer
+![fuief](https://github.com/theeratham/pp013-report/assets/78341944/73db19f3-2566-4b28-b2bd-c30ee184661a)
+6. รายงานตัวที่ 6 รายงานสถานประกอบการที่ยังไม่ได้รับอนุมัติ  report_business_not_approve
+![jmoptj](https://github.com/theeratham/pp013-report/assets/78341944/873b5c1d-3884-4196-bc50-5bc19683dd99)
+7. รายงานตัวที่ 7 รายชื่อผู้ประกอบกิจการค้าทองคำที่ได้รับอนุมัติยกเว้นภาษีมูลค่าเพิ่ม VAT report_gold_vat_approve 
+![ihvnpr](https://github.com/theeratham/pp013-report/assets/78341944/9b17d3ee-11cb-4836-96b9-8b74c8ee99de)
